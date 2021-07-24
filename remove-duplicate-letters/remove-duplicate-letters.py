@@ -1,20 +1,13 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        st = []
-        count = Counter(s)
-        
-        b = [0 for _ in range(26)]
+        st, count = [], Counter(s)
         for c in s:
             count[c] -= 1
-            i = ord(c) - 97
-            if b[i] == 1:
+            if c in st:
                 continue
-                
             while st and count[st[-1]] > 0 and st[-1] > c:
-                b[ord(st.pop()) - 97] = 0
+                st.pop()
             st.append(c)
-            b[i] = 1
-                
             
         return ''.join(st)
             
