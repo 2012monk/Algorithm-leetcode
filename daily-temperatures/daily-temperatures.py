@@ -1,6 +1,7 @@
 class Solution:
     def dailyTemperatures(self, T: List[int]) -> List[int]:
-        
+        if not T:
+            return
         st = []
         b = [0] * len(T)
         
