@@ -1,24 +1,13 @@
-sys.setrecursionlimit(int(1e9))
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        result = []
-        prev = []
-        
-        def search(li):
-            if len(li) == 0:
-                result.append(prev[:])
-                
-            for n in li:
-                nxt = li[:]
-                nxt.remove(n)
-                
-                prev.append(n)
-                search(nxt)
-                prev.pop()
+        results = []
+        self.dfs(nums, [], results)
+        return results
+    
+    def dfs(self, seq, val, res):
+        if not seq:
+            res.append(val)
             
-        search(nums)
-            
-            
-        return result
-            
+        for i in range(len(seq)):
+            self.dfs(seq[:i] + seq[i+1:], val + [seq[i]], res)
             
