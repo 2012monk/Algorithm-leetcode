@@ -1,16 +1,15 @@
 class Solution:
     def findItinerary(self, t: List[List[str]]) -> List[str]:
         g = defaultdict(list)
-        for k in sorted(t):
-            g[k[0]].append(k[1])
+        for k, v in sorted(t, reverse=1):
+            g[k].append(v)
         
         
-        def dfs(k='JFK'):            
+        def dfs(k='JFK'):      
             while g[k]:
-                dfs(g[k].pop(0))
+                dfs(g[k].pop())
             res.append(k)
             
-                
                 
         res = []
         dfs()
