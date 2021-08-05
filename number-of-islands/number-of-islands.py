@@ -1,15 +1,13 @@
 class Solution:
-    grid: list[list[str]]
         
     def numIslands(self, grid: List[List[str]]) -> int:
         m, n = len(grid), len(grid[0])
-        mr, nr = range(m), range(n)
-
         land = 0
         def dfs(i, j):
-            for nx, ny in zip([0, 0, 1, -1], [1, -1, 0, 0]):
-                x, y = i + nx, j + ny
-                if x in mr and y in nr and grid[x][y] != '0':
+            dx, dy = [0, 0, 1, -1], [1, -1, 0, 0]
+            for p in range(4):
+                x, y = i + dx[p], j + dy[p]
+                if 0<= x< m and 0 <= y < n and grid[x][y] != '0':
                     grid[x][y] = '0'
                     dfs(x, y)
             return 1
