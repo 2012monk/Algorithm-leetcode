@@ -1,13 +1,10 @@
 class Solution:
     def findOrder(self, c: int, req: List[List[int]]) -> List[int]:
-        
         g = defaultdict(list)
         for k, v in req:
             g[k].append(v)
         
-        v = []
-        t = set()
-        f = False
+        v, t, f = [], set(), False
         def dfs(k):
             nonlocal f
             if k in v or f:
