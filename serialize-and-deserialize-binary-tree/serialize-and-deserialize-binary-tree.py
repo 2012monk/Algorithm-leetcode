@@ -44,9 +44,7 @@ class Codec:
             
             nodes[i].left = nodes[t-1]
             nodes[i].right = nodes[t]
-        if nodes:
-            return nodes[0]
-        return
+        return nodes[0]
             
         
 
