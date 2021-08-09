@@ -24,6 +24,7 @@ class Codec:
                 continue
             q.append(c.left)
             q.append(c.right)
+            
         return ','.join(saved)
         
 
@@ -36,15 +37,31 @@ class Codec:
         if not data:
             return
         nodes = list(map(lambda x: TreeNode(x), data.split(',')))
-        for i in range(len(nodes) // 2):
-            print(i)
-            t = (i + 1) * 2
-            if t + 1 > len(nodes):
-                continue
+        print(data)
+        li = data.split(',')
+        root = TreeNode(li[0])
+        q = deque([root])
+        i = 1
+        while q:
+            node = q.popleft()
+            if li[i] != 'null':
+                node.left = TreeNode(li[i])
+                q.append(node.left)
+            i += 1
+            if li[i] != 'null':
+                node.right = TreeNode(li[i])
+                q.append(node.right)
+            i += 1
+        return root
+#         for i in range(len(nodes) // 2):
+#             print(i)
+#             t = (i + 1) * 2
+#             if t + 1 > len(nodes):
+#                 continue
             
-            nodes[i].left = nodes[t-1]
-            nodes[i].right = nodes[t]
-        return nodes[0]
+#             nodes[i].left = nodes[t-1]
+#             nodes[i].right = nodes[t]
+#         return nodes[0]
             
         
 
