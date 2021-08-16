@@ -5,7 +5,7 @@ class Solution:
                 if i >= len(data) or data[i] >> 6 != 0b10:
                     return False
             return True
-        # m0 = 0x40, m1 = 0xc0, m2 = 0xe0, m3 = 0xf0
+
         
         l = len(data)
         i = 0
