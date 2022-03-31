@@ -8,20 +8,16 @@ class Solution:
         
         if not head:
             return head
+        cur = head
+        count = 0
+        while cur and count != k:
+            cur = cur.next
+            count += 1
+        if count != k:
+            return head
         
-        node = head
-        while node:
-            tmp, count, st = node, 0, []
-            for _ in range(k):
-                if not tmp:
-                    break
-                st.append(tmp.val)
-                tmp = tmp.next
-                count += 1
-            if count != k:
-                break
-                
-            for _ in range(k):
-                node.val = st.pop()
-                node = node.next
-        return head
+        cur = self.reverseKGroup(cur, k)
+        while count:
+            head.next,cur, head = cur, head, head.next
+            count -= 1
+        return cur
