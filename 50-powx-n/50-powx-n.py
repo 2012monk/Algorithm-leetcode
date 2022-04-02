@@ -7,14 +7,6 @@ class Solution:
             x *= x
             n //= 2 
         return ret
-    def r_pow(self, x, n):
-        ret = 1
-        while n:
-            if n & 1:
-                ret /= x
-            x /= x
-            n //= 2 
-        return ret
 
     def myPow(self, x: float, n: int) -> float:
         if n > 0:
