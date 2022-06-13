@@ -7,6 +7,7 @@ class Solution:
         dp = [0] * len(s)
         dp[0] = 1
         t[ord(s[0])] = 0
+        ret = 1
         for i in range(1, len(s)):
             c = s[i]
             idx = ord(c)
@@ -15,6 +16,6 @@ class Solution:
             else:
                 dp[i] = min(i - t[idx], dp[i - 1] + 1)
             t[idx] = i
-        return max(dp)
-            
+            ret = max(ret, dp[i])
+        return ret
         
