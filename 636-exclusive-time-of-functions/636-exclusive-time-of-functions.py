@@ -13,10 +13,9 @@ class Solution:
             if not s or log[1] == "start":
                 s.append(log)
                 continue
-            if s[-1][0] == log[0] and s[-1][1] == "start":
-                tmp = log[2] - s[-1][2] + 1
-                d[log[0]] += tmp
-                s.pop()
-                for i in range(len(s)):
-                    s[i][2] += tmp
+            tmp = log[2] - s[-1][2] + 1
+            d[log[0]] += tmp
+            s.pop()
+            if s:
+                d[s[-1][0]] -= tmp
         return d
