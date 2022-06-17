@@ -20,8 +20,8 @@ class Solution:
             v[i][j] = 0
             return 0
         v = [[0] * m for _ in range(n)]
-        for i in range(n):
-            for j in range(m):
+        cand = [(i, j) for i in range(n) for j in range(m) if board[i][j] == word[0]]
+        for i, j in cand:
                 if f(i,j,0):
                     return 1
         return 0
