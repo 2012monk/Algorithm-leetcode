@@ -9,7 +9,6 @@ class Solution:
         t=m*n
         dr=0
         ret=[]
-        v=[[0]*m for _ in range(n)]
         
         while c < t:
             ret.append(g[i][j])
