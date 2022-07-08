@@ -3,7 +3,8 @@ class Solution:
         
         mx = -1
         s=[-1]
-        for i in range(len(hs)):
+        n=len(hs)
+        for i in range(n):
             while s[-1] != -1 and hs[s[-1]] >= hs[i]:
                 v = hs[s.pop()]
                 mx = max(mx, (i-s[-1] - 1) * v)
@@ -11,5 +12,5 @@ class Solution:
 
         while s[-1] != -1:
             v = hs[s.pop()]
-            mx = max(mx, (len(hs) - s[-1] - 1) * v)
+            mx = max(mx, (n - s[-1] - 1) * v)
         return mx
