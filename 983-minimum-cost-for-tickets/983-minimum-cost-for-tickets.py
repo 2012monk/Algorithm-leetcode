@@ -16,8 +16,10 @@ class Solution:
 
         maxDay = days[-1]
         covers = [1, 7, 30]
-        @lru_cache(maxsize=None)
+        dp = {}
         def f(day):
+            if day in dp:
+                return dp[day]
             if day > 365 or day > days[-1]:
                 return 0
             ret = float('inf')
@@ -25,6 +27,7 @@ class Solution:
                 cost = costs[i]
                 length = covers[i]
                 ret = min(ret, f(cal[day + length]) + cost)
+            dp[day] = ret 
             return ret
         return f(days[0])
 
