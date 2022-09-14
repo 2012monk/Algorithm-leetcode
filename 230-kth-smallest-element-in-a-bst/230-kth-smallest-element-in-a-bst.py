@@ -12,6 +12,8 @@ class Solution:
                 return left
             l = f(node.left, left)
             node.idx = l + 1
+            if node.idx == k:
+                self.ans = node.val
             r = f(node.right, node.idx)
             return r
         def g(node, idx):
@@ -21,4 +23,4 @@ class Solution:
                 return g(node.left, idx)
             return g(node.right, idx)
         f(root, 0)
-        return g(root, k)
+        return self.ans
